@@ -161,7 +161,7 @@ proxy-groups:
   - name: Proxy
     type: select
     proxies:
-      - 🇭🇰 Hong Kong 0
+      - 🇭🇰 Hong Kong 01
       - 自动选择
 proxy-providers:
   Nexitally:
