@@ -228,12 +228,10 @@ proxy-groups:
     type: select
     use:
       - Nexitally
-      - 晟哥的花云
     proxies:
       - 自动选择
       - DIRECT
       - Nexitally
-      - 晟哥的花云
   # select 用来允许用户手动选择 代理服务器 或 服务器组
   # 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
   - name: Proxy
@@ -262,14 +260,6 @@ proxy-groups:
 proxy-providers:
   Nexitally:
     url: https://naixisubs.com/downloadConfig/Clash.aspx?t=trojan&eq=windows&urk=47438165-172c-4f93-9ec2-8984202e2cb8
-    interval: 3600
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  晟哥的花云:
-    url: https://api.huacloud.xyz/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS&url=https%3A%2F%2Fapi.flowercloud.xyz%2Fosubscribe.php%3Fsid%3D11052%26token%3Drdw29rEXoL7y%26sip002%3D1
     interval: 3600
     health-check:
       enable: true
