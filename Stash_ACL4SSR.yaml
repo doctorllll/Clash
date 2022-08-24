@@ -147,13 +147,14 @@ proxy-groups:
     proxies:
       - 自动选择
       - 🇭🇰 Hong Kong 01
+      - UseProvider
   - name: '自动选择'
     type: url-test
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/mini/Available.png
     interval: 600
     url: http://cp.cloudflare.com/generate_204
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '网飞专线'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
@@ -176,7 +177,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '日本节点'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
@@ -185,7 +186,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '美国节点'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
@@ -194,7 +195,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '台湾节点'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
@@ -203,7 +204,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '狮城节点'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
@@ -212,7 +213,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
   - name: '韩国节点'
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
@@ -221,7 +222,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     tolerance: 50
     use: 
-      - proxy-provider
+      - Nexitally
 #全部节点
   - name: UseProvider
     type: select
