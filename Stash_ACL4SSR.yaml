@@ -147,7 +147,7 @@ proxy-groups:
     use:
       - Nexitally
     proxies:
-      - Proxy
+      - 自动选择
       - DIRECT
 proxy-providers:
   Nexitally:
