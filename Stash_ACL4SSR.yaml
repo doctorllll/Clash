@@ -134,7 +134,11 @@ rule-providers:
   全球加速:
     behavior: classical
     interval: 86400
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml
+    全球加速:
+    behavior: classical
+    interval: 86400
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Video/Netflix.yaml
 proxy-groups:
   - name: '节点选择'
     type: select
