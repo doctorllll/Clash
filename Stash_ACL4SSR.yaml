@@ -1,11 +1,92 @@
 mode: rule
 log-level: info
+host:
+  services.googleapis.cn: 216.58.200.67
+  www.google.cn: 216.58.200.67
 dns:
   default-nameserver:
+    - 223.5.5.5
+    - 1.0.0.1
     - system
   nameserver:
-    - system
+     # 不建议配置超过 2 个 DNS 服务器，会增加系统功耗
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - quic://dns.adguard.com:853
+    - doq://test.dns.nextdns.io:853
+    - system # 使用 iOS 系统 DNS
   fake-ip-filter:
+    - "*.lan"
+    - stun.*.*.*
+    - stun.*.*
+    - time.windows.com
+    - time.nist.gov
+    - time.apple.com
+    - time.asia.apple.com
+    - "*.ntp.org.cn"
+    - "*.openwrt.pool.ntp.org"
+    - time1.cloud.tencent.com
+    - time.ustc.edu.cn
+    - pool.ntp.org
+    - ntp.ubuntu.com
+    - ntp.aliyun.com
+    - ntp1.aliyun.com
+    - ntp2.aliyun.com
+    - ntp3.aliyun.com
+    - ntp4.aliyun.com
+    - ntp5.aliyun.com
+    - ntp6.aliyun.com
+    - ntp7.aliyun.com
+    - time1.aliyun.com
+    - time2.aliyun.com
+    - time3.aliyun.com
+    - time4.aliyun.com
+    - time5.aliyun.com
+    - time6.aliyun.com
+    - time7.aliyun.com
+    - "*.time.edu.cn"
+    - time1.apple.com
+    - time2.apple.com
+    - time3.apple.com
+    - time4.apple.com
+    - time5.apple.com
+    - time6.apple.com
+    - time7.apple.com
+    - time1.google.com
+    - time2.google.com
+    - time3.google.com
+    - time4.google.com
+    - music.163.com
+    - "*.music.163.com"
+    - "*.126.net"
+    - musicapi.taihe.com
+    - music.taihe.com
+    - songsearch.kugou.com
+    - trackercdn.kugou.com
+    - "*.kuwo.cn"
+    - api-jooxtt.sanook.com
+    - api.joox.com
+    - joox.com
+    - y.qq.com
+    - "*.y.qq.com"
+    - streamoc.music.tc.qq.com
+    - mobileoc.music.tc.qq.com
+    - isure.stream.qqmusic.qq.com
+    - dl.stream.qqmusic.qq.com
+    - aqqmusic.tc.qq.com
+    - amobile.music.tc.qq.com
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - music.migu.cn
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - localhost.ptlogin2.qq.com
+    - "*.*.*.srv.nintendo.net"
+    - "*.*.stun.playstation.net"
+    - xbox.*.*.microsoft.com
+    - "*.ipv6.microsoft.com"
+    - "*.*.xboxlive.com"
+    - speedtest.cros.wr.pvp.net
     # from: https://github.com/Kr328/ClashForAndroid/blob/ffa559a57102ed8bc20eba41aa236a7764741bf9/core/src/main/golang/native/config/defaults.go#L10
     # Stun Services
     - "+.stun.*.*"
@@ -32,29 +113,41 @@ http:
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
+proxies:
+  # shadowsocks
+  # 支持加密方式：
+  #   aes-128-gcm aes-192-gcm aes-256-gcm
+  #   aes-128-cfb aes-192-cfb aes-256-cfb
+  #   aes-128-ctr aes-192-ctr aes-256-ctr
+  #   rc4-md5 chacha20 chacha20-ietf xchacha20
+  #   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+  - {"name":"🇭🇰 Hong Kong 01","type":"trojan","server":"mfpsgcs.qqngzh.xyz","port":23383,"password":"47438165-172c-4f93-9ec2-8984202e2cb8","sni":"v1-dy.ixigua.com","skip-cert-verify":true,"udp":true}
 #远程规则集合
 rule-providers:
-  节点选择:
+  全球加速:
     behavior: classical
     interval: 86400
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
-#规则对应策略
-rules：
-  - SCRIPT,quic,REJECT
-  - RULE-SET, 节点选择， 节点选择
 proxy-groups:
-  - name: 节点选择
-    type：select
-    icon：https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+  - name: '节点选择'
+    type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
     proxies:
       - 自动选择
-  - name: 自动选择
-    type：url-test
-    icon：https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/mini/Available.png
+  - name: '自动选择'
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/mini/Available.png
     interval: 600
     url: http://cp.cloudflare.com/generate_204
     use: 
       - proxy-provider
+  - name: UseProvider
+    type: select
+    use:
+      - Nexitally
+    proxies:
+      - Proxy
+      - DIRECT
 proxy-providers:
   Nexitally:
     url: https://naixisubs.com/downloadConfig/Clash.aspx?t=trojan&eq=windows&urk=47438165-172c-4f93-9ec2-8984202e2cb8
@@ -63,5 +156,9 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
+#规则对应策略
+rules:
+  - SCRIPT,quic,REJECT
+  - RULE-SET,全球加速,节点选择
 
   
