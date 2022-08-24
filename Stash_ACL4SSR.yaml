@@ -227,10 +227,11 @@ proxy-groups:
   - name: UseProvider
     type: select
     use:
-      - Nexitally
+      - proxy-providers
     proxies:
       - 自动选择
       - DIRECT
+      - proxy-providers
   # select 用来允许用户手动选择 代理服务器 或 服务器组
   # 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
   - name: Proxy
@@ -238,6 +239,24 @@ proxy-groups:
     proxies:
       - 🇭🇰 Hong Kong 01
       - 自动选择
+
+#根据网络环境智能切换策略
+  - name: ssid-group
+    type: select 
+#类型必须为 select，兼容原版 clash 配置
+    proxies:
+      - 节点选择
+      - DIRECT
+    ssid-policy:
+#在 SSID 为 office 的 Wi-Fi 中自动切换为 ss1 策略
+#在 SSID 为 home 的 Wi-Fi 中自动切换为 ss2 策略
+# 在蜂窝数据中自动切换为 ss3 策略
+# 其他的 SSID 默认为 DIRECT
+      LLDD: DIRECT
+      AX3Pro: DIRECT
+      cellular: 节点选择
+      default: 节点选择
+
 proxy-providers:
   Nexitally:
     url: https://naixisubs.com/downloadConfig/Clash.aspx?t=trojan&eq=windows&urk=47438165-172c-4f93-9ec2-8984202e2cb8
@@ -246,6 +265,15 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
+
+  晟哥的花云:
+    url: https://api.huacloud.xyz/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS&url=https%3A%2F%2Fapi.flowercloud.xyz%2Fosubscribe.php%3Fsid%3D11052%26token%3Drdw29rEXoL7y%26sip002%3D1
+    interval: 3600
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
 #规则对应策略
 rules:
   - SCRIPT,quic,REJECT
