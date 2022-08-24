@@ -121,7 +121,14 @@ proxies:
   #   aes-128-ctr aes-192-ctr aes-256-ctr
   #   rc4-md5 chacha20 chacha20-ietf xchacha20
   #   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
-  - {"name":"🇭🇰 Hong Kong 01","type":"trojan","server":"mfpsgcs.qqngzh.xyz","port":23383,"password":"47438165-172c-4f93-9ec2-8984202e2cb8","sni":"v1-dy.ixigua.com","skip-cert-verify":true,"udp":true}
+  - name: '🇭🇰 Hong Kong 01'
+    type: trojan
+    server: mfpsgcs.qqngzh.xyz
+    port: 23383
+    password: 47438165-172c-4f93-9ec2-8984202e2cb8
+    sni: v1-dy.ixigua.com
+    skip-cert-verify: true
+    udp: true
 #远程规则集合
 rule-providers:
   全球加速:
@@ -149,6 +156,13 @@ proxy-groups:
     proxies:
       - 自动选择
       - DIRECT
+  # select 用来允许用户手动选择 代理服务器 或 服务器组
+  # 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
+  - name: Proxy
+    type: select
+    proxies:
+      - 🇭🇰 Hong Kong 0
+      - 自动选择
 proxy-providers:
   Nexitally:
     url: https://naixisubs.com/downloadConfig/Clash.aspx?t=trojan&eq=windows&urk=47438165-172c-4f93-9ec2-8984202e2cb8
