@@ -57,7 +57,7 @@ proxy-providers:
   all-sub: &all-sub # 建立锚点
     <<: *remote-resources-default-config
     # 此处默认使用 Sub-Store 订阅链接，如果需要使用其他订阅链接，可以替换下面的 url 即可
-    url: "https://sub.store/download/collection/subs"
+    url: "https://sub.store/download/collection/%E8%B5%B7%E9%A3%9E%E5%95%A6%F0%9F%9B%AB%EF%B8%8F"
     # 可以使用任意类型的链接仅替换上面文字，多个链接使用英文符号的竖杠 | 隔开一起写上即可
     # Sub-Store 与 Clash 类型订阅链接替换掉整个引号""内的链接
     path: ./all.yaml
@@ -112,17 +112,6 @@ proxy-groups:
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Microsoft.png?raw=true
     proxies:
       *global-direct
-
-  - name: Duolingo
-    type: select
-    icon: https://github.com/QuentinHsu/Awesome-Apple/blob/main/Icon/duolingo.png?raw=true
-    proxies:
-      - Auto Hong Kong
-      - Fallback Hong Kong
-      - DIRECT
-    use:
-      - all-sub
-    filter: 港|🇭🇰|HK|Hong Kong
 
   - name: Speedtest
     type: select
@@ -202,13 +191,6 @@ proxy-groups:
       - Other Country
 
   - name: Hong Kong
-    type: select
-    icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Hong_Kong.png?raw=true
-    use:
-      - all-sub
-    filter: 港|🇭🇰|HK|Hong Kong
-
-  - name: Auto Hong Kong
     type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Hong_Kong.png?raw=true
     url: "http://www.gstatic.com/generate_204"
@@ -226,22 +208,33 @@ proxy-groups:
     filter: 港|🇭🇰|HK|Hong Kong
 
   - name: Japan
-    type: select
+    type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Japan.png?raw=true
+    url: 'http://www.gstatic.com/generate_204'
     use:
       - all-sub
     filter: 日|🇯🇵|东京|JP|Japan
 
+  - name: Singapore
+    type: url-test
+    icon: https://github.com/Orz-3/mini/blob/master/Color/SG.png?raw=true
+    url: 'http://www.gstatic.com/generate_204'
+    use:
+      - all-sub
+    fliter: 新加坡|坡|狮城|SG|Singapore
+
   - name: Tai Wan
-    type: select
+    type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/Taiwan.png?raw=true
+    url: 'http://www.gstatic.com/generate_204'
     use:
       - all-sub
     filter: 台|🇨🇳|🇹🇼|湾|TW|Taiwan
 
   - name: America
-    type: select
+    type: url-test
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/United_States.png?raw=true
+    url: 'http://www.gstatic.com/generate_204'
     use:
       - all-sub
     filter: 美国|美|🇺🇲|US|American
@@ -251,7 +244,7 @@ proxy-groups:
     icon: https://github.com/Koolson/Qure/blob/master/IconSet/Color/World_Map.png?raw=true
     use:
       - all-sub
-    filter: ^(?!.*(香港|港|🇭🇰|HK|Hong Kong|日本|日|🇯🇵|JP|Japan|台湾|台|🇹🇼|TW|Taiwan|美国|美|🇺🇲|US|American|CN)).*
+    filter: ^(?!.*(香港|港|🇭🇰|HK|Hong Kong|日本|日|🇯🇵|JP|Japan|台湾|台|🇹🇼|TW|Taiwan|美国|美|🇺🇲|US|American|CN|新加坡|坡|狮城|SG|Singapore)).*
 
 
 rule-providers:
