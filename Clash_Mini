@@ -112,7 +112,7 @@ proxies:
 # 搬瓦工_hy2协议
   - name: "HY2-自建"
     type: hysteria2
-    server: qwejoyfd.duckdns.org
+    server: 178.157.56.128
     port: 443
     password: "0QQl0CfblyyfGZ6G+/mD0vMP"           # ← 换成你自己的
     sni: qwejoyfd.duckdns.org
