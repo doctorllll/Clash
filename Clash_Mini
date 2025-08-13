@@ -109,6 +109,15 @@ proxies:
       public-key: 3w9gRHe-lpwR95LAz1j4hHgKnunHouziPBKHNX4lSzQ    # Reality public-key
       short-id: 6ba85179e30d4fc2                        # Reality short-id
     client-fingerprint: chrome                  # 自定义浏览器指纹
+# 搬瓦工_hy2协议
+  - name: "HY2-自建"
+    type: hysteria2
+    server: qwejoyfd.duckdns.org
+    port: 443
+    password: "0QQl0CfblyyfGZ6G+/mD0vMP"           # ← 换成你自己的
+    sni: qwejoyfd.duckdns.org
+    skip-cert-verify: false
+
 # 锚点 - 节点订阅的参数 [每24小时更新一次订阅节点，每 60 秒一次健康检查]
 NodeParam: &NodeParam {type: http, interval: 86400, health-check: {enable: true, url: 'http://connectivitycheck.gstatic.com/generate_204', interval: 60}}
 
