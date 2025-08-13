@@ -110,11 +110,11 @@ proxies:
       short-id: 6ba85179e30d4fc2                        # Reality short-id
     client-fingerprint: chrome                  # 自定义浏览器指纹
 # 搬瓦工_hy2协议
-  - name: "HY2-自建"
+  - name: "HY2-节点"
     type: hysteria2
-    server: 178.157.56.128
+    server: qwejoyfd.duckdns.org
     port: 443
-    password: "0QQl0CfblyyfGZ6G+/mD0vMP"           # ← 换成你自己的
+    password: "0QQl0CfblyyfGZ6G+/mD0vMP"
     sni: qwejoyfd.duckdns.org
     skip-cert-verify: false
 
