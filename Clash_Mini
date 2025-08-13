@@ -104,7 +104,7 @@ proxies:
     udp: true
     tls: true
     flow: xtls-rprx-vision
-    servername: www.swift.com                      # 自定义回落域名
+    servername: one-piece.com                      # 自定义回落域名
     reality-opts: 
       public-key: 3w9gRHe-lpwR95LAz1j4hHgKnunHouziPBKHNX4lSzQ    # Reality public-key
       short-id: 6ba85179e30d4fc2                        # Reality short-id
